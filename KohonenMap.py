@@ -17,7 +17,7 @@ class KohonenNeuron:
         return np.sqrt((self.row - i)**2 + (self.col - j)**2)
 
 
-class SOM():
+class SOM:
     topology_rows: int
     topology_columns: int
 
@@ -124,6 +124,3 @@ class SOM():
             else:
                 centers = np.vstack([centers, neuron.weights])
         return centers
-
-
-

@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd15a031-0903-434f-aab6-852cec6c706e" name="Changes" comment="development started">
+      <change beforePath="$PROJECT_DIR$/.idea/kohonen_map.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kohonen_map.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KohonenMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/KohonenMap.py" afterDir="false" />
     </list>
@@ -23,9 +25,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2eJX8SFmzr90oG7265XbTrQCHcw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -37,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/grand/PycharmProjects/LinearRegressionModels/LinearRegressionModels.py"
+    "last_opened_file_path": "E:/PycharmProjects/KohonenMap"
   }
 }]]></component>
   <component name="SharedIndexes">

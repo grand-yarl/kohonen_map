@@ -14,7 +14,7 @@ class KohonenNeuron:
         self.col = set_col
 
     def topology_distance(self, i, j):
-        return np.sqrt((self.row - i)**2 + (self.col - j)**2)
+        return (self.row - i)**2 + (self.col - j)**2
 
 
 class SOM:
@@ -50,12 +50,14 @@ class SOM:
         self.cooperation_decay = set_cooperation_decay
         self.learning_decay = set_learning_decay
 
+        self.neurons = []
+
     def generate_neurons(self, X_criterion: np.array([])):
         pca_analizer = PCA(n_components=2)
         pca_analizer.fit(X_criterion)
-        mean_vector = np.average(X_criterion, axis=1)
-        component_1 = pca_analizer.components_[1]
-        component_2 = pca_analizer.components_[2]
+        mean_vector = np.average(X_criterion, axis=0)
+        component_1 = pca_analizer.components_[0]
+        component_2 = pca_analizer.components_[1]
         singulars = pca_analizer.singular_values_
 
         for i in range(self.topology_rows):
@@ -80,28 +82,26 @@ class SOM:
     def cooperation(self, winner: KohonenNeuron):
         for neuron in self.neurons:
             h = neuron.topology_distance(winner.row, winner.col)
-            neuron.topology_neighbourhood = np.exp(-h / (2 * self.cooperation_coeff))
+            neuron.topology_neighbourhood = np.exp(-h / (2 * self.cooperation_coeff**2))
         return
 
-    def adaptation(self, sample):
+    def adaptation(self, sample: np.array([])):
         for neuron in self.neurons:
             neuron.weights += self.learning_rate * neuron.topology_neighbourhood * (sample - neuron.weights)
         return
 
     def decay(self):
-        self.cooperation_coeff /= self.cooperation_decay
-        self.learning_rate /= self.learning_decay
+        self.cooperation_coeff *= self.cooperation_decay
+        self.learning_rate *= self.learning_decay
 
     def fit(self, X_criterion):
-
         self.generate_neurons(X_criterion)
-
         for i in range(self.epoch_number):
-            X_current = np.array(X_criterion)
+            X_current = np.copy(X_criterion)
             np.random.shuffle(X_current)
-            while np.shape(X_current)[0] == 0:
+            while np.shape(X_current)[0] > 0:
                 sample = X_current[0]
-                X_current = np.delete(X_current, 0, axis=1)
+                X_current = np.delete(X_current, 0, axis=0)
                 winner = self.competition(sample)
                 self.cooperation(winner)
                 self.adaptation(sample)
